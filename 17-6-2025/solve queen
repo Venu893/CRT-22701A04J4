@@ -1,0 +1,19 @@
+public class main{
+    public static void main(String []args){
+        int[][]={
+            {0,0,0,0},
+            {0,0,0,0},
+            {0,0,0,0},
+            {0,0,0,0}
+        };
+        solveQueen(board,0);
+    }
+    public static void solveQueen(int[][]board,int row){
+        if(row==board.length){
+            printBoard(board);
+            System.out.println("---------");
+            return n;
+        }
+        for(int col=0)
+    }
+}
