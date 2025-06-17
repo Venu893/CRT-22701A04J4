@@ -1,0 +1,22 @@
+public class Main{
+    public static void main(String args[]){
+        Movie M1=new Movie("saaho",9,155);
+        M1.details();
+    }
+}
+class Movie{
+    String name;
+    int rating;
+    int duration;
+    Movie(String name,int rating,int duration){
+        this.name=name;
+        this.rating=rating;
+        this.duration=duration;
+    }
+    void details(){
+        System.out.println("Movie name:"+name);
+        System.out.println("Movie rating:"+rating);
+        System.out.println("Movie duration:"+duration+"mins");
+        System.out.println((rating>7)?"block buster hit":"flop");
+    }
+}

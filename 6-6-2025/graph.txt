@@ -1,0 +1,69 @@
+public class Practice {
+    public static void main(String[] args) {
+        Graph graph = new Graph(4);  
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(0, 3);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 3);
+
+        printGraph(graph);
+    }
+
+    
+    static void printGraph(Graph graph) {
+        for (int i = 0; i < graph.vertices; i++) {
+            System.out.println(i + ": " + graph.neighbors(i));
+        }
+    }
+}
+
+class Graph {
+    ArrayList<ArrayList<Integer>> graph;
+    int vertices;
+
+    Graph(int vertices) {
+        this.vertices = vertices;
+        graph = new ArrayList<>();
+        for (int i = 0; i < vertices; i++) {
+            graph.add(new ArrayList<>());
+        }
+    }
+
+    boolean isvalid(int src, int dest) {
+        return src >= 0 && src < vertices && dest >= 0 && dest < vertices;
+    }
+
+    void addEdge(int src, int dest) {
+        if (isvalid(src, dest)) {
+            graph.get(src).add(dest);
+            graph.get(dest).add(src);
+        } else {
+            System.out.println("Invalid source or destination");
+        }
+    }
+
+    void removeEdge(int src, int dest) {
+        if (isvalid(src, dest)) {
+            graph.get(src).remove(Integer.valueOf(dest));  
+            graph.get(dest).remove(Integer.valueOf(src));
+        } else {
+            System.out.println("Invalid source or destination");
+        }
+    }
+
+    public ArrayList<Integer> neighbors(int node) {
+        if (node >= 0 && node < vertices) {
+            return graph.get(node);
+        } else {
+            return new ArrayList<>();
+        }
+    }
+
+    boolean isHandlingEdge(int src, int dest) {
+        if (isvalid(src, dest)) {
+            return graph.get(src).contains(dest);
+        }
+        return false;
+    }
+}
